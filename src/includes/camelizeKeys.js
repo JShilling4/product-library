@@ -1,13 +1,13 @@
 import { camelCase } from "lodash";
 
-const camelize = (obj) => {
+const camelizeKeys = (obj) => {
     if (Array.isArray(obj)) {
-        return obj.map((v) => camelize(v));
+        return obj.map((v) => camelizeKeys(v));
     } else if (obj != null && obj.constructor === Object) {
         return Object.keys(obj).reduce(
             (result, key) => ({
                 ...result,
-                [camelCase(key)]: camelize(obj[key]),
+                [camelCase(key)]: camelizeKeys(obj[key]),
             }),
             {}
         );
@@ -15,4 +15,4 @@ const camelize = (obj) => {
     return obj;
 };
 
-export default camelize;
+export default camelizeKeys;
