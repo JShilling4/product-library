@@ -1,11 +1,13 @@
 import { createStore } from "vuex";
 import modules from "./modules";
 import api from "@/api";
-import camelize from "@/includes/camelize";
+import camelizeKeys from "@/includes/camelizeKeys";
 
 export default createStore({
     state: {
-        data: [],
+        data: {
+            items: [],
+        },
     },
 
     mutations: {
@@ -16,10 +18,16 @@ export default createStore({
 
     actions: {
         fetchPageData({ commit }) {
-            api.fetchPageData().then((response) => {
-                commit("UPDATE_DATA", camelize(response.data));
+            return api.fetchPageData().then((response) => {
+                commit("UPDATE_DATA", camelizeKeys(response.data));
             });
         },
+    },
+
+    getters: {
+        productById: (state) => (id) => {
+            return state.data.items.find((item) => item.itemId === id);
+        }
     },
 
     modules,
