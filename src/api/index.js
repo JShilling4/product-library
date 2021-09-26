@@ -1,16 +1,16 @@
 import data from "./mocks/data.json";
 
-const isMock = true;
-const mockDelay = 400;
+const usingMocks = true;
+const networkDelay = 400;
 
 // ENDPOINTS
 export default {
     fetchPageData() {
-        if (isMock) {
+        if (usingMocks) {
             return new Promise((resolve, reject) => {
                 setTimeout(() => {
                     resolve({ data });
-                }, mockDelay);
+                }, networkDelay);
             });
         }
     }
