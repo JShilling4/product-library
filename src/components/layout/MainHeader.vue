@@ -1,0 +1,122 @@
+<template>
+    <header class="header">
+        <div class="content container">
+            <transition name="fade">
+                <div
+                    v-if="data.manufacturerId"
+                    class="brand-wrapper"
+                >
+                    <img
+                        :src="`http://images.repzio.com/productImages/${data.manufacturerId}/logo${data.manufacturerId}_lg.jpg?height=100`"
+                        class="brandLogo"
+                    />
+                    <p class="companyName">{{ data.companyName }}</p>
+                </div>
+            </transition>
+
+            <div
+                v-if="salesRep"
+                class="rep-block"
+            >
+                <p class="line repName">{{ salesRep.firstName }} {{ salesRep.lastName }}</p>
+                <a
+                    :href="`mailto: ${salesRep.emailAddress}`"
+                    class="line email"
+                >{{ salesRep.emailAddress }}</a>
+                <a
+                    :href="`tel: ${repPhone}`"
+                    class="line phone"
+                >{{ repPhone }}</a>
+                <p class="line location">{{ repAddress }}</p>
+            </div>
+        </div>
+    </header>
+</template>
+
+<script>
+import { mapState } from "vuex";
+import formatPhone from "@/includes/formatPhone";
+
+export default {
+    name: "MainHeader",
+
+    computed: {
+        ...mapState(["data"]),
+        salesRep() {
+            return this.data.salesRep;
+        },
+        repPhone() {
+            return this.salesRep.cellPhone
+                ? formatPhone(this.salesRep.cellPhone)
+                : formatPhone(this.salesRep.phone);
+        },
+        repAddress() {
+            return `${this.salesRep.city}, ${this.salesRep.state} ${this.salesRep.postalCode}`;
+        },
+    },
+
+    methods: {
+        formatPhone(str) {
+            return formatPhone(str);
+        },
+    },
+};
+</script>
+
+<style lang="scss" scoped>
+.header {
+    height: 16rem;
+    padding: 1rem 0;
+    border-bottom: 3px solid var(--primary-color);
+    @include breakpoint(phone-sm) {
+        height: 14rem;
+    }
+    .content {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+    .brand-wrapper {
+        .brandLogo {
+            @include breakpoint(phone-sm) {
+                height: 75px;
+            }
+        }
+        .companyName {
+            font-weight: 600;
+            font-size: 22px;
+            color: var(--gray-text);
+            @include breakpoint(phone-sm) {
+                font-size: 16px;
+            }
+        }
+    }
+
+    .rep-block {
+        display: flex;
+        flex-direction: column;
+        text-align: right;
+        .line {
+            padding: 0.2rem 0;
+            font-size: 1.4rem;
+
+            &.repName {
+                font-weight: 700;
+            }
+            &.email,
+            &.phone {
+                color: var(--gray-text);
+                text-decoration: underline;
+                transition: color 0.3s;
+                cursor: pointer;
+                &:hover {
+                    color: var(--primary-color);
+                }
+            }
+            &.location {
+                color: var(--gray-text);
+            }
+        }
+    }
+}
+</style>
