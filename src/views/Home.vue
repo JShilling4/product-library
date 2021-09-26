@@ -1,11 +1,5 @@
 <template>
-    <div class="home">
-        <img
-            v-if="data.manufacturerId"
-            :src="`http://images.repzio.com/productimages/${data.manufacturerId}/logo${data.manufacturerId}_lg.jpg`"
-            alt="Manufacturer Logo"
-        />
-
+    <div class="home container">
         <h1 class="pageHeading">Products</h1>
 
         <div class="products-container">
@@ -20,7 +14,7 @@
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex";
+import { mapState } from "vuex";
 import ProductCard from "@/components/ProductCard.vue";
 
 export default {
@@ -33,48 +27,29 @@ export default {
         ...mapState(["data"]),
     },
 
-    methods: {
-        ...mapActions(["fetchPageData"]),
-    },
-
-    created() {
-        this.fetchPageData();
-    },
+    mounted() {
+        window.scrollTo(0, 0);
+    }
 };
 </script>
 
 <style lang="scss">
 .home {
-    padding: 10rem;
+    .pageHeading {
+        margin: 4rem 0 6rem;
+        font-weight: 600;
+        font-size: 2.4rem;
+        /* color: var(--gray-text); */
+    }
 
     .products-container {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        row-gap: 5rem;
-        justify-content: space-evenly;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        column-gap: 4rem;
+        row-gap: 10rem;
+        justify-content: center;
         justify-items: center;
-        align-content: space-evenly;
-        align-items: center;
-    }
-
-    .product {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
-        width: 350px;
-        cursor: pointer;
-        padding: 2rem;
-        border-radius: 5px;
-
-        .productImage {
-            clip-path: inset(2.5%);
-        }
-
-        .productName {
-            font-weight: 600;
-            margin-top: 1rem;
-        }
+        padding-bottom: 12rem;
     }
 }
 </style>
