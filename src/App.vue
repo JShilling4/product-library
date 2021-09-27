@@ -24,7 +24,7 @@ export default {
     },
 
     computed: {
-        ...mapState(["pageDataHasLoaded", "data"]),
+        ...mapState(["pageDataHasLoaded", "pageData"]),
     },
 
     methods: {

@@ -1,12 +1,12 @@
 <template>
-    <div class="input-wrapper">
-        <input
-            :style="styleObject"
-            :value="modelValue"
-            @input="$emit('update:modelValue', $event.target.value)"
-            class="input"
-        />
-    </div>
+    <input
+        :style="styleObject"
+        :value="modelValue"
+        @input="$emit('update:modelValue', $event.target.value)"
+        :id="id"
+        :aria-labelledBy="ariaLabelledby"
+        class="input"
+    />
 </template>
 
 <script>

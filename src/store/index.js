@@ -5,7 +5,7 @@ import camelizeKeys from "@/helpers/camelizeKeys";
 
 export default createStore({
     state: {
-        data: {
+        pageData: {
             items: [],
         },
         pageDataHasLoaded: false,
@@ -13,7 +13,7 @@ export default createStore({
 
     mutations: {
         UPDATE_DATA(state, payload) {
-            state.data = payload;
+            state.pageData = payload;
         },
         TOGGLE_PAGE_LOADING(state, value) {
             state.pageDataHasLoaded = value;
@@ -31,7 +31,7 @@ export default createStore({
 
     getters: {
         productById: (state) => (id) => {
-            return state.data.items.find((item) => item.itemId === id);
+            return state.pageData.items.find((item) => item.itemId === id);
         },
     },
 

@@ -4,7 +4,7 @@ import MainHeader from "@/components/layout/MainHeader.vue";
 describe("MainHeader.vue", () => {
     const $store = {
         state: {
-            data: {
+            pageData: {
                 companyName: "Good Company",
                 manufacturerId: "772",
                 salesRep: {

@@ -4,10 +4,11 @@
 
             <div class="brand-wrapper">
                 <img
-                    :src="`http://images.repzio.com/productImages/${data.manufacturerId}/logo${data.manufacturerId}_lg.jpg?height=100`"
+                    :src="`http://images.repzio.com/productImages/${pageData.manufacturerId}/logo${pageData.manufacturerId}_lg.jpg?height=100`"
                     class="brandLogo"
+                    :alt="pageData.companyName"
                 />
-                <p class="companyName">{{ data.companyName }}</p>
+                <p class="companyName">{{ pageData.companyName }}</p>
             </div>
 
             <div
@@ -38,9 +39,9 @@ export default {
     name: "MainHeader",
 
     computed: {
-        ...mapState(["data"]),
+        ...mapState(["pageData"]),
         salesRep() {
-            return this.data.salesRep;
+            return this.pageData.salesRep;
         },
         repPhone() {
             return this.salesRep.cellPhone

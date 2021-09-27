@@ -13,6 +13,8 @@
                     border-radius="5px 0 0 5px"
                     v-model="searchQuery"
                     @keyup.enter="filterProducts"
+                    id="searchProducts"
+                    aria-labelledby="searchProducts"
                 />
                 <app-button
                     background-color="var(--primary-color)"
@@ -26,14 +28,14 @@
             </div>
         </div>
 
-        <div class="products-container">
+        <section class="products-container">
             <product-card
                 v-for="product in filteredProducts"
                 :key="product.id"
                 :product="product"
                 @click="$router.push(`/product/${product.itemId}`)"
             />
-        </div>
+        </section>
     </div>
 </template>
 
@@ -55,12 +57,12 @@ export default {
     },
 
     computed: {
-        ...mapState(["data"]),
+        ...mapState(["pageData"]),
     },
 
     methods: {
         filterProducts() {
-            this.filteredProducts = this.data.items.filter((item) =>
+            this.filteredProducts = this.pageData.items.filter((item) =>
                 item.itemName
                     .toLowerCase()
                     .includes(this.searchQuery.toLowerCase())
@@ -70,7 +72,7 @@ export default {
 
     mounted() {
         window.scrollTo(0, 0);
-        this.filteredProducts = this.data.items;
+        this.filteredProducts = this.pageData.items;
     },
 };
 </script>

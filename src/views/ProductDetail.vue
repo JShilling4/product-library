@@ -33,7 +33,7 @@
                 <p class="infoItem itemId">{{ product.itemId }}</p>
                 <p class="infoItem name">{{ product.itemName }}</p>
                 <p class="infoItem basePrice">${{ product.basePrice }}</p>
-                <p class="infoItem">
+                <p class="infoItem dimensions">
                     <span class="key">Dimensions:</span> {{ product.dimensions }}
                 </p>
                 <p class="infoItem description">{{ product.description }}</p>
