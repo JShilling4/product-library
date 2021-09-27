@@ -3,7 +3,7 @@
         <div class="overlay">
             <app-button
                 class="productBtn"
-                color="#333"
+                color="#000"
             >See Details</app-button>
         </div>
         <img
@@ -70,6 +70,7 @@ export default {
         width: 100%;
         height: 0;
         opacity: 0.9;
+        border-radius: 5px;
         transition: all 0.5s;
     }
 

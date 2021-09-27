@@ -1,18 +1,14 @@
 <template>
     <header class="header">
         <div class="content container">
-            <transition name="fade">
-                <div
-                    v-if="data.manufacturerId"
-                    class="brand-wrapper"
-                >
-                    <img
-                        :src="`http://images.repzio.com/productImages/${data.manufacturerId}/logo${data.manufacturerId}_lg.jpg?height=100`"
-                        class="brandLogo"
-                    />
-                    <p class="companyName">{{ data.companyName }}</p>
-                </div>
-            </transition>
+
+            <div class="brand-wrapper">
+                <img
+                    :src="`http://images.repzio.com/productImages/${data.manufacturerId}/logo${data.manufacturerId}_lg.jpg?height=100`"
+                    class="brandLogo"
+                />
+                <p class="companyName">{{ data.companyName }}</p>
+            </div>
 
             <div
                 v-if="salesRep"
@@ -30,12 +26,13 @@
                 <p class="line location">{{ repAddress }}</p>
             </div>
         </div>
+
     </header>
 </template>
 
 <script>
 import { mapState } from "vuex";
-import formatPhone from "@/includes/formatPhone";
+import formatPhone from "@/helpers/formatPhone";
 
 export default {
     name: "MainHeader",
@@ -84,10 +81,10 @@ export default {
         }
         .companyName {
             font-weight: 600;
-            font-size: 22px;
+            font-size: 1.9rem;
             color: var(--gray-text);
             @include breakpoint(phone-sm) {
-                font-size: 16px;
+                font-size: 1.6rem;
             }
         }
     }
@@ -102,6 +99,7 @@ export default {
 
             &.repName {
                 font-weight: 700;
+                font-size: 1.5rem;
             }
             &.email,
             &.phone {

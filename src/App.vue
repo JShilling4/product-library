@@ -1,19 +1,21 @@
 <template>
     <div class="app">
-        <main-header />
+        <transition name="element-fade" appear>
+            <main-header v-if="pageDataHasLoaded" />
+        </transition>
         <router-view v-slot="{ Component }">
             <transition
-                name="fade"
+                name="view-fade"
                 mode="out-in"
             >
-                <component :is="Component" />
+                <component v-if="pageDataHasLoaded" :is="Component" />
             </transition>
         </router-view>
     </div>
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapState } from "vuex";
 import MainHeader from "@/components/layout/MainHeader.vue";
 
 export default {
@@ -21,11 +23,16 @@ export default {
         "main-header": MainHeader,
     },
 
+    computed: {
+        ...mapState(["pageDataHasLoaded", "data"]),
+    },
+
     methods: {
         ...mapActions(["fetchPageData"]),
     },
 
     created() {
+        // fix for scroll position jump on route change
         if ("scrollRestoration" in window.history) {
             window.history.scrollRestoration = "manual";
         }

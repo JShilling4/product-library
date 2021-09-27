@@ -1,9 +1,18 @@
-.fade-enter-active,
-.fade-leave-active {
+.view-fade-enter-active,
+.view-fade-leave-active {
     transition: opacity 0.3s ease;
 }
 
-.fade-enter-from,
-.fade-leave-to {
+.view-fade-enter-from {
+    opacity: 0;
+}
+
+.element-fade-enter-active,
+.element-fade-leave-active {
+    transition: opacity 0.3s ease;
+}
+
+.element-fade-enter-from,
+.element-fade-leave-to {
     opacity: 0;
 }
