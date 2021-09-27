@@ -3,13 +3,22 @@
         v-if="product"
         class="productDetail-wrapper container"
     >
-        <app-button
-            class="backBtn"
-            background-color="var(--primary-color)"
-            color="#fff"
-            border="none"
-            @click="$router.go(-1)"
-        >Back</app-button>
+        <div class="top-bar">
+            <app-button
+                class="backBtn"
+                background-color="var(--primary-color)"
+                color="#fff"
+                border="none"
+                width="13rem"
+                @click="$router.go(-1)"
+            >
+                <font-awesome-icon
+                    :icon="['fas', 'angle-left']"
+                    class="backIcon"
+                />Back
+            </app-button>
+
+        </div>
 
         <div class="productDetail">
             <div class="display-wrapper col col1">
@@ -58,11 +67,7 @@ export default {
 
         this.product = await this.productById(this.$route.params.id);
         if (!this.product) {
-            await this.fetchPageData();
-            this.product = await this.productById(this.$route.params.id);
-            if (!this.product) {
-                window.location.href = "/404";
-            }
+            window.location.href = "/404";
         }
     },
 };
@@ -73,6 +78,15 @@ export default {
     padding-bottom: 12rem;
     .backBtn {
         margin-top: 3rem;
+        font-size: 1.7rem;
+
+        .backIcon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+        }
     }
 }
 .productDetail {
@@ -82,6 +96,9 @@ export default {
     min-height: 41rem;
     @include breakpoint(tablet-lg) {
         flex-wrap: wrap;
+    }
+    @include breakpoint(phone-lg) {
+        margin-top: 5rem;
     }
 
     .col1 {
@@ -95,12 +112,18 @@ export default {
         display: flex;
         justify-content: center;
         padding-right: 4rem;
+        @include breakpoint(tablet-lg) {
+            padding-left: 4rem;
+        }
     }
 
     .info-wrapper {
         max-width: 50rem;
         @include breakpoint(tablet-lg) {
             margin-top: 6rem;
+        }
+        @include breakpoint(phone-lg) {
+            margin-top: 4rem;
         }
     }
 
