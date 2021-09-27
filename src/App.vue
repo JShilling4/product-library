@@ -9,6 +9,7 @@
                 mode="out-in"
             >
                 <component v-if="pageDataHasLoaded" :is="Component" />
+                <page-loader v-else />
             </transition>
         </router-view>
     </div>
@@ -17,10 +18,12 @@
 <script>
 import { mapActions, mapState } from "vuex";
 import MainHeader from "@/components/layout/MainHeader.vue";
+import PageLoader from './components/layout/PageLoader.vue';
 
 export default {
     components: {
         "main-header": MainHeader,
+        "page-loader": PageLoader,
     },
 
     computed: {
@@ -45,11 +48,6 @@ export default {
 @import "~@/scss/base";
 @import "~@/scss/typography";
 @import "~@/scss/transitions";
-
-.app {
-    // kill layout shif when scrollbar appears/disappears
-    /* padding-left: calc(100vw - 100%); */
-}
 
 .container {
     max-width: 1400px;
