@@ -115,6 +115,9 @@ export default {
         @include breakpoint(tablet-lg) {
             padding-left: 4rem;
         }
+        @include breakpoint(phone-lg) {
+            min-height: 30rem;
+        }
     }
 
     .info-wrapper {
