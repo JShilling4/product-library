@@ -1,6 +1,6 @@
 <template>
     <div
-        v-if="product"
+        v-if="product.photoName"
         class="productDetail-wrapper container"
     >
         <div class="top-bar">
