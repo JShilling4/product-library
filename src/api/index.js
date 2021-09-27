@@ -1,7 +1,7 @@
 import data from "./mocks/data.json";
 
 const usingMocks = true;
-const networkDelay = 600;
+const networkDelay = 500;
 
 // ENDPOINTS
 export default {

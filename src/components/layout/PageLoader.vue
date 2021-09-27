@@ -34,7 +34,7 @@ export default {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
+    /* background-color: rgba(0, 0, 0, 0.3); */
 }
 
 /* :not(:required) hides these rules from IE9 and below */
@@ -61,15 +61,15 @@ export default {
     animation: spinner 1500ms infinite linear;
     border-radius: 0.5em;
     -webkit-box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0,
-        rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0,
-        rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.5) -1.5em 0 0 0,
-        rgba(0, 0, 0, 0.5) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0,
-        rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
-    box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0,
-        rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0,
-        rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) -1.5em 0 0 0,
-        rgba(0, 0, 0, 0.75) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0,
-        rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+        var(--primary-color) 1.1em 1.1em 0 0, var(--primary-color) 0 1.5em 0 0,
+        var(--primary-color) -1.1em 1.1em 0 0, var(--primary-color) -1.5em 0 0 0,
+        var(--primary-color) -1.1em -1.1em 0 0, var(--primary-color) 0 -1.5em 0 0,
+        var(--primary-color) 1.1em -1.1em 0 0;
+    box-shadow: var(--primary-color) 1.5em 0 0 0,
+        var(--primary-color) 1.1em 1.1em 0 0, var(--primary-color) 0 1.5em 0 0,
+        var(--primary-color) -1.1em 1.1em 0 0, var(--primary-color) -1.5em 0 0 0,
+        var(--primary-color) -1.1em -1.1em 0 0, var(--primary-color) 0 -1.5em 0 0,
+        var(--primary-color) 1.1em -1.1em 0 0;
 }
 
 /* Animation */
