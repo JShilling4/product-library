@@ -112,9 +112,6 @@ export default {
         display: flex;
         justify-content: center;
         padding-right: 4rem;
-        .productImg {
-            height: 40rem;
-        }
         @include breakpoint(tablet-lg) {
             padding-left: 4rem;
         }
